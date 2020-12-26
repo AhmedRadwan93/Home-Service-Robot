@@ -1,8 +1,13 @@
-#!/bin/sh
-xterm -e " roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=/home/workspace/catkin_ws/src/world/ahmed__world.world " &
+#!/bin/bash
+
+# Build the catkin_ws
+cd $(pwd)/../..; catkin_make
+
+# Launch the nodes
+xterm  -e "source devel/setup.bash; export TURTLEBOT_GAZEBO_WORLD_FILE="$(pwd)/src/world/ahmed__world.world"; roslaunch turtlebot_gazebo turtlebot_world.launch" &
+sleep 7
+xterm  -e "source devel/setup.bash; export TURTLEBOT_GAZEBO_MAP_FILE="$(pwd)/src/world/map.yaml"; roslaunch turtlebot_gazebo amcl_demo.launch " &
 sleep 5
-xterm -e " roslaunch turtlebot_gazebo amcl_demo.launch  map_file:=/home/workspace/catkin_ws/src/world/map.yaml " &
+xterm  -e "source devel/setup.bash; roslaunch turtlebot_rviz_launchers view_navigation.launch" &
 sleep 5
-xterm -e " roslaunch turtlebot_rviz_launchers view_navigation.launch " &
-sleep 15
-xterm -e "rosrun pick_objects pick_objects"
+xterm  -e "source devel/setup.bash; rosrun pick_objects pick_objects"
