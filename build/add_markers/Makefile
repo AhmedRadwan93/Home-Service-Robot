@@ -79,18 +79,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -135,6 +123,18 @@ test/fast: test
 
 .PHONY : test/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # The main all target
 all: cmake_check_build_system
 	cd /home/workspace/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/workspace/catkin_ws/build/CMakeFiles /home/workspace/catkin_ws/build/add_markers/CMakeFiles/progress.marks
@@ -168,81 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
-.PHONY : add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-nav_msgs_generate_messages_py: add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
-
-.PHONY : nav_msgs_generate_messages_py
-
-# fast build rule for target.
-nav_msgs_generate_messages_py/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/build
-.PHONY : nav_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-add_markers/CMakeFiles/add_markers.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/add_markers.dir/rule
-.PHONY : add_markers/CMakeFiles/add_markers.dir/rule
-
-# Convenience name for target.
-add_markers: add_markers/CMakeFiles/add_markers.dir/rule
-
-.PHONY : add_markers
-
-# fast build rule for target.
-add_markers/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/add_markers.dir/build.make add_markers/CMakeFiles/add_markers.dir/build
-.PHONY : add_markers/fast
-
-# Convenience name for target.
-add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
-.PHONY : add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-nav_msgs_generate_messages_nodejs: add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : nav_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-nav_msgs_generate_messages_nodejs/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
-.PHONY : nav_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
-.PHONY : add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-nav_msgs_generate_messages_lisp: add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : nav_msgs_generate_messages_lisp
-
-# fast build rule for target.
-nav_msgs_generate_messages_lisp/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
-.PHONY : nav_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
-.PHONY : add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-nav_msgs_generate_messages_eus: add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
-
-.PHONY : nav_msgs_generate_messages_eus
-
-# fast build rule for target.
-nav_msgs_generate_messages_eus/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/build
-.PHONY : nav_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
 add_markers/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule:
 	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
 .PHONY : add_markers/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
@@ -256,21 +181,6 @@ visualization_msgs_generate_messages_py: add_markers/CMakeFiles/visualization_ms
 visualization_msgs_generate_messages_py/fast:
 	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make add_markers/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
 .PHONY : visualization_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
-.PHONY : add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-visualization_msgs_generate_messages_lisp: add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : visualization_msgs_generate_messages_lisp
-
-# fast build rule for target.
-visualization_msgs_generate_messages_lisp/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
-.PHONY : visualization_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 add_markers/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule:
@@ -288,34 +198,19 @@ visualization_msgs_generate_messages_nodejs/fast:
 .PHONY : visualization_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-add_markers/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : add_markers/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+.PHONY : add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_cpp: add_markers/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+visualization_msgs_generate_messages_lisp: add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : geometry_msgs_generate_messages_cpp
+.PHONY : visualization_msgs_generate_messages_lisp
 
 # fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make add_markers/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-add_markers/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-.PHONY : add_markers/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_lisp: add_markers/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_lisp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_lisp/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make add_markers/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
-.PHONY : geometry_msgs_generate_messages_lisp/fast
+visualization_msgs_generate_messages_lisp/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make add_markers/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
+.PHONY : visualization_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 add_markers/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/rule:
@@ -348,49 +243,19 @@ visualization_msgs_generate_messages_eus/fast:
 .PHONY : visualization_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-add_markers/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-.PHONY : add_markers/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
+.PHONY : add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_eus: add_markers/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+nav_msgs_generate_messages_lisp: add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : geometry_msgs_generate_messages_eus
+.PHONY : nav_msgs_generate_messages_lisp
 
 # fast build rule for target.
-geometry_msgs_generate_messages_eus/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make add_markers/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
-.PHONY : geometry_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-add_markers/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-.PHONY : add_markers/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_nodejs: add_markers/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-geometry_msgs_generate_messages_nodejs/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make add_markers/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
-.PHONY : geometry_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-add_markers/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-.PHONY : add_markers/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_py: add_markers/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_py
-
-# fast build rule for target.
-geometry_msgs_generate_messages_py/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make add_markers/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
-.PHONY : geometry_msgs_generate_messages_py/fast
+nav_msgs_generate_messages_lisp/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make add_markers/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
+.PHONY : nav_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 add_markers/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule:
@@ -406,6 +271,66 @@ nav_msgs_generate_messages_cpp: add_markers/CMakeFiles/nav_msgs_generate_message
 nav_msgs_generate_messages_cpp/fast:
 	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make add_markers/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build
 .PHONY : nav_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+.PHONY : add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_py: add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+
+.PHONY : nav_msgs_generate_messages_py
+
+# fast build rule for target.
+nav_msgs_generate_messages_py/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make add_markers/CMakeFiles/nav_msgs_generate_messages_py.dir/build
+.PHONY : nav_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
+.PHONY : add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_eus: add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
+
+.PHONY : nav_msgs_generate_messages_eus
+
+# fast build rule for target.
+nav_msgs_generate_messages_eus/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make add_markers/CMakeFiles/nav_msgs_generate_messages_eus.dir/build
+.PHONY : nav_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+.PHONY : add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_nodejs: add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : nav_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+nav_msgs_generate_messages_nodejs/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make add_markers/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
+.PHONY : nav_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+add_markers/CMakeFiles/add_markers.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 add_markers/CMakeFiles/add_markers.dir/rule
+.PHONY : add_markers/CMakeFiles/add_markers.dir/rule
+
+# Convenience name for target.
+add_markers: add_markers/CMakeFiles/add_markers.dir/rule
+
+.PHONY : add_markers
+
+# fast build rule for target.
+add_markers/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f add_markers/CMakeFiles/add_markers.dir/build.make add_markers/CMakeFiles/add_markers.dir/build
+.PHONY : add_markers/fast
 
 src/add_markers.o: src/add_markers.cpp.o
 
@@ -442,27 +367,22 @@ help:
 	@echo "... depend"
 	@echo "... install/local"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... nav_msgs_generate_messages_py"
-	@echo "... add_markers"
-	@echo "... nav_msgs_generate_messages_nodejs"
-	@echo "... nav_msgs_generate_messages_lisp"
-	@echo "... nav_msgs_generate_messages_eus"
 	@echo "... visualization_msgs_generate_messages_py"
+	@echo "... visualization_msgs_generate_messages_nodejs"
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... visualization_msgs_generate_messages_lisp"
-	@echo "... visualization_msgs_generate_messages_nodejs"
-	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... rebuild_cache"
-	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... visualization_msgs_generate_messages_cpp"
 	@echo "... visualization_msgs_generate_messages_eus"
-	@echo "... geometry_msgs_generate_messages_eus"
-	@echo "... geometry_msgs_generate_messages_nodejs"
-	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... nav_msgs_generate_messages_lisp"
 	@echo "... test"
 	@echo "... nav_msgs_generate_messages_cpp"
+	@echo "... install"
+	@echo "... nav_msgs_generate_messages_py"
+	@echo "... nav_msgs_generate_messages_eus"
+	@echo "... nav_msgs_generate_messages_nodejs"
+	@echo "... add_markers"
 	@echo "... src/add_markers.o"
 	@echo "... src/add_markers.i"
 	@echo "... src/add_markers.s"
