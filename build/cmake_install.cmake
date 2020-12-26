@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/workspace/catkin_ws/build/gtest/cmake_install.cmake")
+  include("/home/workspace/catkin_ws/build/pick_objects/cmake_install.cmake")
   include("/home/workspace/catkin_ws/build/slam_gmapping/slam_gmapping/cmake_install.cmake")
   include("/home/workspace/catkin_ws/build/turtlebot/turtlebot/cmake_install.cmake")
   include("/home/workspace/catkin_ws/build/turtlebot/turtlebot_bringup/cmake_install.cmake")
