@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "gmapping")
-set(gmapping_VERSION "1.4.2")
-set(gmapping_MAINTAINER "ROS Orphaned Package Maintainers <ros-orphaned-packages@googlegroups.com>")
+set(gmapping_VERSION "1.3.10")
+set(gmapping_MAINTAINER "Vincent Rabaud <vincent.rabaud@gmail.com>")
 set(gmapping_PACKAGE_FORMAT "1")
 set(gmapping_BUILD_DEPENDS "nav_msgs" "openslam_gmapping" "roscpp" "rostest" "tf" "nodelet")
 set(gmapping_BUILD_EXPORT_DEPENDS "nav_msgs" "openslam_gmapping" "roscpp" "tf" "nodelet")

@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "slam_gmapping")
-set(slam_gmapping_VERSION "1.4.2")
-set(slam_gmapping_MAINTAINER "ROS Orphaned Package Maintainers <ros-orphaned-packages@googlegroups.com>")
+set(slam_gmapping_VERSION "1.3.10")
+set(slam_gmapping_MAINTAINER "Vincent Rabaud <vincent.rabaud@gmail.com>")
 set(slam_gmapping_PACKAGE_FORMAT "1")
 set(slam_gmapping_BUILD_DEPENDS )
 set(slam_gmapping_BUILD_EXPORT_DEPENDS "openslam_gmapping" "gmapping")
