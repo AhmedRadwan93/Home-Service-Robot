@@ -9,9 +9,9 @@
 /home/workspace/catkin_ws/src/add_markers/src/add_markers.cpp
 ros/ros.h
 -
-visualization_msgs/Marker.h
--
 nav_msgs/Odometry.h
+-
+visualization_msgs/Marker.h
 -
 
 /opt/ros/kinetic/include/geometry_msgs/Point.h

@@ -1,13 +1,11 @@
 #include <ros/ros.h>
-#include <visualization_msgs/Marker.h>
 #include <nav_msgs/Odometry.h>
+#include <visualization_msgs/Marker.h>
 
-
-const float dist_thres = 0.4;
+const int max_wait_goal = 10;
+const int DEBUGodom = 350;
+const float dist_thres = 0.6;
 const bool DEBUG = false;
-const int DEBUGodom = 200;
-
-const int max_wait_goal = 5;
 const bool use_goal_pub = false;
 
 class add_markers
@@ -38,14 +36,14 @@ private:
   ros::Subscriber odom_sub;
   ros::Subscriber mb_sub;
   marker_status status;
-  // for debug purposes, requires refactor to remove
+
   marker_status newstatus;
   order_of_goal goal_order;
   bool subscriber_exist;
   geometry_msgs::Pose goal;
   geometry_msgs::Pose odom;
   visualization_msgs::Marker marker;
-  // for debug purposes
+
   int logc;
   int wait_goal_pub;
   ros::Time pick_time;
@@ -65,31 +63,29 @@ add_markers::add_markers() {
   goal_sub = n.subscribe("/target",1,&add_markers::goalCallback,this);
   odom_sub = n.subscribe("/odom",1,&add_markers::odomCallback,this);
 
-  // Set our initial shape type to be a cube
+
   uint32_t shape = visualization_msgs::Marker::CUBE;
-  // Set the frame ID and timestamp.  See the TF tutorials for information on these.
+
   marker.header.frame_id = "map";
   marker.header.stamp = ros::Time::now();
   marker.ns = "add_markers";
   marker.id = 0;
   marker.type = shape;
 
-  // Set the pose of the marker.  This is a full 6DOF pose relative to the frame/time specified in the header
-  //marker.pose.position.x = 0.0;
-  //marker.pose.position.y = 0.0;
+  
   marker.pose.position.z = 0;
   marker.pose.orientation.x = 0.0;
   marker.pose.orientation.y = 0.0;
   marker.pose.orientation.z = 0.0;
-  //marker.pose.orientation.w = 0.0;
 
 
-  // Set the scale of the marker -- 1x1x1 here means 1m on a side
+
+
   marker.scale.x = 0.4;
   marker.scale.y = 0.4;
   marker.scale.z = 0.4;
 
-  // Set the color -- be sure to set alpha to something non-zero!
+
   marker.color.r = 0.3f;
   marker.color.g = 0.5f;
   marker.color.b = 0.7f;
@@ -161,8 +157,7 @@ void add_markers::odomCallback(const nav_msgs::Odometry::ConstPtr &msg) {
 
   bool close = close_enough(odom, goal);
   newstatus = marker_undefined;
-  //if (status == marker_go_pick && close) status = marker_pick;
-  //else if (status == marker_carry && close) status = marker_go_drop;
+ 
   if (status == marker_go_pick && goal_order == pickup_goal && close) {
     newstatus = marker_pick;
     if (DEBUG) ROS_INFO("Status CHANGE %d.: newstatus:%d from status:%d", logc, newstatus, status);
@@ -206,7 +201,7 @@ void add_markers::update() {
         pick_time = ros::Time::now();
       }
       else if (status == marker_start || status == marker_go_drop) {
-        // Set the marker action.  Options are ADD, DELETE, and new in ROS Indigo: 3 (DELETEALL)
+
         marker.action = visualization_msgs::Marker::ADD;
 
         if (status == marker_start) {
@@ -218,7 +213,7 @@ void add_markers::update() {
             goal.orientation.w = -0.5;
           }
 
-          // Set the pose of the marker.  This is a full 6DOF pose relative to the frame/time specified in the header
+
           marker.pose.position.x = goal.position.x;
           marker.pose.position.y = goal.position.y;
           marker.pose.orientation.w = goal.orientation.w;
@@ -255,10 +250,6 @@ void add_markers::update() {
 
 
       marker.lifetime = ros::Duration();
-
-      // Publish the marker
-
-
 
       marker_pub.publish(marker);
     }
