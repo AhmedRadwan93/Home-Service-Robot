@@ -14,30 +14,33 @@ class add_markers
 {
 public:
   add_markers();
-  
-  enum MarkerStatus {
-    MarkerStart = 0,
-    MarkerGoPick = 1,
-    MarkerPick = 2,
-    MarkerCarry = 3,
-    MarkerGoDrop = 4,
-    MarkerDrop = 5,
-    MarkerUndefined = 6 };
-  enum GoalOrder {
-    GoalUndefined = 0,
-    GoalPickup = 1,
-    GoalDrop = 2
+
+  enum order_of_goal {
+    pickup_goal = 1,
+    drop_goal = 2,
+    undefined_goal= 0
   };
+  
+  enum marker_status {
+    marker_start = 0,
+    marker_go_pick= 1,
+    marker_pick = 2,
+    marker_carry = 3,
+    marker_go_drop  = 4,
+    marker_drop = 5,
+    marker_undefined= 6
+ };
+ 
 private:
   ros::NodeHandle n;
   ros::Publisher marker_pub;
   ros::Subscriber goal_sub;
   ros::Subscriber odom_sub;
   ros::Subscriber mb_sub;
-  MarkerStatus status;
+  marker_status status;
   // for debug purposes, requires refactor to remove
-  MarkerStatus newstatus;
-  GoalOrder goal_order;
+  marker_status newstatus;
+  order_of_goal goal_order;
   bool subscriber_exist;
   geometry_msgs::Pose goal;
   geometry_msgs::Pose odom;
@@ -55,8 +58,8 @@ private:
 
 add_markers::add_markers() {
   logc = 0;
-  status = MarkerStart;
-  goal_order = GoalUndefined;
+  status = marker_start;
+  goal_order = undefined_goal;
   subscriber_exist = false;
   marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
   goal_sub = n.subscribe("/target",1,&add_markers::goalCallback,this);
@@ -107,12 +110,12 @@ bool add_markers::close_enough(const geometry_msgs::Pose &pos, const geometry_ms
       pos.position.x, target.position.x,
       pos.position.y, target.position.y,
       pos.position.z, target.position.z,
-      status == MarkerStart,
-      status == MarkerGoPick,
-      status == MarkerPick,
-      status == MarkerCarry,
-      status == MarkerGoDrop,
-      status == MarkerDrop);
+      status == marker_start,
+      status == marker_go_pick,
+      status == marker_pick,
+      status == marker_carry,
+      status == marker_go_drop,
+      status == marker_drop);
   }
   return (dist < dist_thres);
 }
@@ -129,9 +132,9 @@ void add_markers::goalCallback(const geometry_msgs::Pose &msg) {
   goal.orientation.y = msg.orientation.y;
   goal.orientation.z = msg.orientation.z;
   goal.orientation.w = msg.orientation.w;
-  if (goal_order == GoalUndefined) goal_order = GoalPickup;
-  else if (goal_order == GoalPickup) {
-    goal_order = GoalDrop;
+  if (goal_order == undefined_goal) goal_order = pickup_goal;
+  else if (goal_order == pickup_goal) {
+    goal_order = drop_goal;
     ROS_INFO("Carry the object to the drop off point");
   }
   if (DEBUG) ROS_INFO("Goal received goal_order:%d, x:%f, y:%f, w:%f",
@@ -157,19 +160,19 @@ void add_markers::odomCallback(const nav_msgs::Odometry::ConstPtr &msg) {
   odom.orientation.w = msg->pose.pose.orientation.w;
 
   bool close = close_enough(odom, goal);
-  newstatus = MarkerUndefined;
-  //if (status == MarkerGoPick && close) status = MarkerPick;
-  //else if (status == MarkerCarry && close) status = MarkerGoDrop;
-  if (status == MarkerGoPick && goal_order == GoalPickup && close) {
-    newstatus = MarkerPick;
+  newstatus = marker_undefined;
+  //if (status == marker_go_pick && close) status = marker_pick;
+  //else if (status == marker_carry && close) status = marker_go_drop;
+  if (status == marker_go_pick && goal_order == pickup_goal && close) {
+    newstatus = marker_pick;
     if (DEBUG) ROS_INFO("Status CHANGE %d.: newstatus:%d from status:%d", logc, newstatus, status);
   }
-  else if (status == MarkerCarry && goal_order == GoalDrop && close) {
-    newstatus = MarkerGoDrop;
+  else if (status == marker_carry && goal_order == drop_goal && close) {
+    newstatus = marker_go_drop;
     if (DEBUG) ROS_INFO("Status CHANGE %d.: newstatus:%d from status:%d", logc, newstatus, status);
   }
   logc++;
-  if (newstatus != MarkerUndefined) status = newstatus;
+  if (newstatus != marker_undefined) status = newstatus;
   this->update();
 }
 
@@ -187,29 +190,29 @@ void add_markers::update() {
       ROS_WARN_ONCE("Please create a subscriber to the marker");
     }
     bool wait_for_goal_pub = false;
-    if (goal_order == GoalUndefined && wait_goal_pub <= max_wait_goal) {
+    if (goal_order == undefined_goal && wait_goal_pub <= max_wait_goal) {
       ROS_WARN("Waiting for a goal location %d / %d", wait_goal_pub, max_wait_goal);
       wait_goal_pub++;
       wait_for_goal_pub = true;
       ros::Duration(0.5).sleep();
     }
     if (subscriber_exist && !wait_for_goal_pub) {
-      if (status == MarkerPick) {
+      if (status == marker_pick) {
         marker.action = visualization_msgs::Marker::DELETE;
         ROS_INFO("Robot picks up the object");
-        newstatus = MarkerCarry;
+        newstatus = marker_carry;
         if (DEBUG) ROS_INFO("Status CHANGE %d.: newstatus:%d from status:%d", logc, newstatus, status);
         status = newstatus;
         pick_time = ros::Time::now();
       }
-      else if (status == MarkerStart || status == MarkerGoDrop) {
+      else if (status == marker_start || status == marker_go_drop) {
         // Set the marker action.  Options are ADD, DELETE, and new in ROS Indigo: 3 (DELETEALL)
         marker.action = visualization_msgs::Marker::ADD;
 
-        if (status == MarkerStart) {
-          if(goal_order != GoalPickup) {
+        if (status == marker_start) {
+          if(goal_order != pickup_goal) {
             ROS_INFO("Goal publisher doesn't work, update manually pickup goal_order:%d", goal_order);
-            goal_order = GoalPickup;
+            goal_order = pickup_goal;
             goal.position.x = 4.0;
             goal.position.y = 6.0;
             goal.orientation.w = -0.5;
@@ -219,17 +222,17 @@ void add_markers::update() {
           marker.pose.position.x = goal.position.x;
           marker.pose.position.y = goal.position.y;
           marker.pose.orientation.w = goal.orientation.w;
-          newstatus = MarkerGoPick;
+          newstatus = marker_go_pick;
           if (DEBUG) ROS_INFO("Status CHANGE %d.: newstatus:%d from status:%d", logc, newstatus, status);
           status = newstatus;
          }
 
-         else if (status == MarkerGoDrop) {
+         else if (status == marker_go_drop) {
           // Set the pose of the marker.  This is a full 6DOF pose relative to the frame/time specified in the header
           marker.pose.position.x =  goal.position.x;
           marker.pose.position.y = goal.position.y;
           marker.pose.orientation.w =  goal.orientation.w;
-          newstatus = MarkerDrop;
+          newstatus = marker_drop;
           ROS_INFO("Drop the object at the drop off point");
           if (DEBUG) ROS_INFO("Status CHANGE %d.: newstatus:%d from status:%d", logc, newstatus, status);
           status = newstatus;
@@ -238,11 +241,11 @@ void add_markers::update() {
           ROS_WARN("ERROR on status:%d or goal_order%d", status, goal_order);
          }
       }
-      else if (status == MarkerCarry && goal_order != GoalDrop){
+      else if (status == marker_carry && goal_order != drop_goal){
         ros::Duration t_from_pick = ros::Time::now() - pick_time;
         if(t_from_pick >= ros::Duration(5.0)) {
           ROS_INFO("Goal publisher doesn't work, update manually drop off goal_order:%d", goal_order);
-          goal_order = GoalDrop;
+          goal_order = drop_goal;
           goal.position.x = -4.0;
           goal.position.y = 6.0;
           goal.orientation.w = -0.5;
