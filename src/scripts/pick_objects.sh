@@ -3,7 +3,7 @@
 
 
 # Launch the nodes
-xterm  -e "export TURTLEBOT_GAZEBO_WORLD_FILE="$(pwd)/src/world/ahmed__world.world"; roslaunch turtlebot_gazebo turtlebot_world.launch" &
+xterm  -e " export TURTLEBOT_GAZEBO_WORLD_FILE="$(rospack find add_markers)/world/ahmed__world.world"; roslaunch turtlebot_gazebo turtlebot_world.launch  " &
 sleep 7
 xterm  -e "export TURTLEBOT_GAZEBO_MAP_FILE="$(pwd)/src/world/map.yaml"; roslaunch turtlebot_gazebo amcl_demo.launch " &
 sleep 5
