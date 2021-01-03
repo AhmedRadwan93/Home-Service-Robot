@@ -16,6 +16,7 @@ turtlebot_interactions/turtlebot_interactive_markers/CMakeFiles/turtlebot_marker
  /opt/ros/kinetic/include/geometry_msgs/Vector3.h
  /opt/ros/kinetic/include/geometry_msgs/Vector3Stamped.h
  /opt/ros/kinetic/include/interactive_markers/interactive_marker_server.h
+ /opt/ros/kinetic/include/interactive_markers/visibility_control.hpp
  /opt/ros/kinetic/include/ros/advertise_options.h
  /opt/ros/kinetic/include/ros/advertise_service_options.h
  /opt/ros/kinetic/include/ros/assert.h
@@ -31,6 +32,7 @@ turtlebot_interactions/turtlebot_interactive_markers/CMakeFiles/turtlebot_marker
  /opt/ros/kinetic/include/ros/exceptions.h
  /opt/ros/kinetic/include/ros/forwards.h
  /opt/ros/kinetic/include/ros/init.h
+ /opt/ros/kinetic/include/ros/internal/condition_variable.h
  /opt/ros/kinetic/include/ros/macros.h
  /opt/ros/kinetic/include/ros/master.h
  /opt/ros/kinetic/include/ros/message.h

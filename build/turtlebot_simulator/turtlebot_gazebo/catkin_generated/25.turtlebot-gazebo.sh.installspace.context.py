@@ -16,7 +16,7 @@ CATKIN_PACKAGE_BIN_DESTINATION = 'lib/turtlebot_gazebo'
 CATKIN_PACKAGE_ETC_DESTINATION = 'etc/turtlebot_gazebo'
 CATKIN_PACKAGE_INCLUDE_DESTINATION = 'include/turtlebot_gazebo'
 CATKIN_PACKAGE_LIB_DESTINATION = 'lib'
-CATKIN_PACKAGE_LIBEXEC_DESTINATION = ''
+CATKIN_PACKAGE_LIBEXEC_DESTINATION = 'lib/turtlebot_gazebo'
 CATKIN_PACKAGE_PYTHON_DESTINATION = 'lib/python2.7/dist-packages/turtlebot_gazebo'
 CATKIN_PACKAGE_SHARE_DESTINATION = 'share/turtlebot_gazebo'
 

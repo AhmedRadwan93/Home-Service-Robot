@@ -3,9 +3,6 @@
 
 wall_follower/CMakeFiles/wall_follower.dir/src/wall_follower.cpp.o
  /home/workspace/catkin_ws/src/wall_follower/src/wall_follower.cpp
- /opt/ros/kinetic/include/boost_161_condition_variable.h
- /opt/ros/kinetic/include/boost_161_pthread_condition_variable.h
- /opt/ros/kinetic/include/boost_161_pthread_condition_variable_fwd.h
  /opt/ros/kinetic/include/geometry_msgs/Point.h
  /opt/ros/kinetic/include/geometry_msgs/Point32.h
  /opt/ros/kinetic/include/geometry_msgs/PointStamped.h
@@ -34,6 +31,7 @@ wall_follower/CMakeFiles/wall_follower.dir/src/wall_follower.cpp.o
  /opt/ros/kinetic/include/ros/exceptions.h
  /opt/ros/kinetic/include/ros/forwards.h
  /opt/ros/kinetic/include/ros/init.h
+ /opt/ros/kinetic/include/ros/internal/condition_variable.h
  /opt/ros/kinetic/include/ros/macros.h
  /opt/ros/kinetic/include/ros/master.h
  /opt/ros/kinetic/include/ros/message.h

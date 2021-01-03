@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "gmapping"
 PROJECT_SPACE_DIR = "/home/workspace/catkin_ws/install"
-PROJECT_VERSION = "1.3.10"
+PROJECT_VERSION = "1.4.2"
