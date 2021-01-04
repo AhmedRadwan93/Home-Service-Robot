@@ -1,4 +1,4 @@
-prefix=/home/workspace/catkin_ws/install
+prefix=/home/workspace/Project5/install
 
 Name: add_markers
 Description: Description of add_markers

@@ -1,4 +1,4 @@
-prefix=/home/workspace/catkin_ws/install
+prefix=/home/workspace/Project5/install
 
 Name: pick_objects
 Description: Description of pick_objects

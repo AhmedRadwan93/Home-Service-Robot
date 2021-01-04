@@ -1,8 +1,8 @@
-# Install script for directory: /home/workspace/catkin_ws/src/add_markers
+# Install script for directory: /home/workspace/Project5/src/add_markers
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/workspace/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/workspace/Project5/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/workspace/catkin_ws/build/add_markers/catkin_generated/installspace/add_markers.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/workspace/Project5/build/add_markers/catkin_generated/installspace/add_markers.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/add_markers/cmake" TYPE FILE FILES
-    "/home/workspace/catkin_ws/build/add_markers/catkin_generated/installspace/add_markersConfig.cmake"
-    "/home/workspace/catkin_ws/build/add_markers/catkin_generated/installspace/add_markersConfig-version.cmake"
+    "/home/workspace/Project5/build/add_markers/catkin_generated/installspace/add_markersConfig.cmake"
+    "/home/workspace/Project5/build/add_markers/catkin_generated/installspace/add_markersConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/add_markers" TYPE FILE FILES "/home/workspace/catkin_ws/src/add_markers/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/add_markers" TYPE FILE FILES "/home/workspace/Project5/src/add_markers/package.xml")
 endif()
 

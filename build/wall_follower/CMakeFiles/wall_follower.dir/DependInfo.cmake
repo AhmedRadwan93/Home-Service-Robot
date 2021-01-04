@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/workspace/catkin_ws/src/wall_follower/src/wall_follower.cpp" "/home/workspace/catkin_ws/build/wall_follower/CMakeFiles/wall_follower.dir/src/wall_follower.cpp.o"
+  "/home/workspace/Project5/src/wall_follower/src/wall_follower.cpp" "/home/workspace/Project5/build/wall_follower/CMakeFiles/wall_follower.dir/src/wall_follower.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,7 +17,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/workspace/catkin_ws/src/wall_follower/include"
+  "/home/workspace/Project5/src/wall_follower/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

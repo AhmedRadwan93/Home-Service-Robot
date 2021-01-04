@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/workspace/catkin_ws/src/pick_objects/src/pick_objects.cpp" "/home/workspace/catkin_ws/build/pick_objects/CMakeFiles/pick_objects.dir/src/pick_objects.cpp.o"
+  "/home/workspace/Project5/src/pick_objects/src/pick_objects.cpp" "/home/workspace/Project5/build/pick_objects/CMakeFiles/pick_objects.dir/src/pick_objects.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,7 +17,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/workspace/catkin_ws/src/pick_objects/include"
+  "/home/workspace/Project5/src/pick_objects/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

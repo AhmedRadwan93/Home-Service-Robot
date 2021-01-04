@@ -1,8 +1,8 @@
-# Install script for directory: /home/workspace/catkin_ws/src/pick_objects
+# Install script for directory: /home/workspace/Project5/src/pick_objects
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/workspace/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/workspace/Project5/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/workspace/catkin_ws/build/pick_objects/catkin_generated/installspace/pick_objects.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/workspace/Project5/build/pick_objects/catkin_generated/installspace/pick_objects.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/pick_objects/cmake" TYPE FILE FILES
-    "/home/workspace/catkin_ws/build/pick_objects/catkin_generated/installspace/pick_objectsConfig.cmake"
-    "/home/workspace/catkin_ws/build/pick_objects/catkin_generated/installspace/pick_objectsConfig-version.cmake"
+    "/home/workspace/Project5/build/pick_objects/catkin_generated/installspace/pick_objectsConfig.cmake"
+    "/home/workspace/Project5/build/pick_objects/catkin_generated/installspace/pick_objectsConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/pick_objects" TYPE FILE FILES "/home/workspace/catkin_ws/src/pick_objects/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/pick_objects" TYPE FILE FILES "/home/workspace/Project5/src/pick_objects/package.xml")
 endif()
 

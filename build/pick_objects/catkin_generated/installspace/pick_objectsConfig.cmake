@@ -67,14 +67,14 @@ set(pick_objects_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(pick_objects_SOURCE_PREFIX /home/workspace/catkin_ws/src/pick_objects)
-  set(pick_objects_DEVEL_PREFIX /home/workspace/catkin_ws/devel)
+  set(pick_objects_SOURCE_PREFIX /home/workspace/Project5/src/pick_objects)
+  set(pick_objects_DEVEL_PREFIX /home/workspace/Project5/devel)
   set(pick_objects_INSTALL_PREFIX "")
   set(pick_objects_PREFIX ${pick_objects_DEVEL_PREFIX})
 else()
   set(pick_objects_SOURCE_PREFIX "")
   set(pick_objects_DEVEL_PREFIX "")
-  set(pick_objects_INSTALL_PREFIX /home/workspace/catkin_ws/install)
+  set(pick_objects_INSTALL_PREFIX /home/workspace/Project5/install)
   set(pick_objects_PREFIX ${pick_objects_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/workspace/catkin_ws/install/lib;/home/workspace/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/workspace/Project5/install/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
