@@ -5,15 +5,22 @@
 The home service robot project uses the below ROS packages, cloned all of them:
 
 [gmapping](http://wiki.ros.org/gmapping)
+
 [turtlebot_teleop](http://wiki.ros.org/turtlebot_teleop)
+
 [turtlebot_rviz_launchers](http://wiki.ros.org/turtlebot_rviz_launchers)
+
 [turtlebot_gazebo](http://wiki.ros.org/turtlebot_gazebo)
 
 # Installing the pkgs
 $ git clone https://github.com/ros-perception/slam_gmapping
+
 $ git clone https://github.com/turtlebot/turtlebot
+
 $ git clone https://github.com/turtlebot/turtlebot_interactions
+
 $ git clone https://github.com/turtlebot/turtlebot_simulator
+
 
 # Package Map:
 
@@ -66,7 +73,7 @@ Run launch.sh to test Gazebo and RViz are working.
 
 ## Testing SLAM
 
-$ roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=~/catkin_ws/src/worlds/u.world
+$ roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=$(find rospack add_markers/world/ahmed__world.world)
 
 Run test_slam.sh to test slam is working, it requires manual movement of the robot.
 
